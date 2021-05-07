@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  dbmysql01:
+    container_name: mysql_devops
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./db/binds/mysql_01:/var/lib/mysql
+      - ./db/mysql-dump:/docker-entrypoint-initdb.d
+    security_opt:
+      - seccomp:unconfined
+  devops01:
+    # Change "san99tiago" for your DockerHub username
+    image: san99tiago/devops_challenge:latest
+    restart: on-failure
+    environment:
+      - HOST=dbmysql01
+      - PORT=3306
+      - USER=root
+      - PASSWORD=root
+    expose:
+      - "8092"
+    ports:
+      - "8092:8090"
+    depends_on:
+      - dbmysql01
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1G

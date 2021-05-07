@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  datasource:
+    host: ${HOST:127.0.0.1}
+    port: ${PORT:33061}
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/devopsdb?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: ${USER:root}
+    password: ${PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+server:
+  port: 8090
+---
+spring:
+  profiles: prod
+  datasource:
+    host: ${HOST:dbmysql01}
+    port: ${PORT:3306}
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/devopsdb?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: ${USER:root}
+    password: ${PASSWORD:root}
+  jpa: 
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+server:
+  port: 8091
