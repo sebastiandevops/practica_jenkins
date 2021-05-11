@@ -8,8 +8,8 @@ spring:
     host: ${HOST:127.0.0.1}
     port: ${PORT:33061}
     url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/devopsdb?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: ${USER:root}
-    password: ${PASSWORD:root}
+    username: root #${USER:root}
+    password: root #${PASSWORD:root}
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,8 +25,8 @@ spring:
     host: ${HOST:dbmysql01}
     port: ${PORT:3306}
     url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/devopsdb?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: ${USER:root}
-    password: ${PASSWORD:root}
+    username: root #${USER:root}
+    password: root #${PASSWORD:root}
   jpa: 
     hibernate:
       ddl-auto: update
